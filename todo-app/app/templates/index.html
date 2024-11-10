@@ -3,6 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+            margin: 0;
+        }
+        h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            flex: 1;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+            max-width: 400px;
+        }
+        li {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <h1>Todo List</h1>
@@ -15,8 +80,10 @@
         {% for task in tasks %}
             <li>
                 {{ task.title }}
-                <a href="{{ url_for('edit_task', task_id=task.id) }}">Edit</a>
-                <a href="{{ url_for('delete_task', task_id=task.id) }}">Delete</a>
+                <div>
+                    <a href="{{ url_for('edit_task', task_id=task.id) }}">Edit</a>
+                    <a href="{{ url_for('delete_task', task_id=task.id) }}">Delete</a>
+                </div>
             </li>
         {% endfor %}
     </ul>
